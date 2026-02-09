@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | EHR-Chain</title>
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="header">
+        <div class="logo"><img id="logo" src="H-C-H pics/Screenshot 2025-11-12 150000.png" height="70" width="100" alt="LogoImage"></div>
+        <nav class="navbar">
+            <a href="admin.html" class="active">Dashboard</a>
+            <a href="#about">Patients</a>
+            <a href="#features">Records</a>
+            <a href="#contact">Blockchain Logs</a>
+            <a href="registration.html">Settings</a>
+            <a href="login.html">LogOut</a>
+        </nav>
+    </header>
+
+    <div class="dashboard-container">
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <h2 class="logo"></h2>
+            <p>admin's name</p>
+            <p>admin's Phone</p>
+            <p>admin's Email</p>
+            <nav>
+                <ul>
+                    <li><a href="#" class="active">Dashboard</a></li>
+                    <li><a href="#">Patients</a></li>
+                    <li><a href="#">Records</a></li>
+                    <li><a href="#">Blockchain Logs</a></li>
+                    <li><a href="#">Settings</a></li>
+                    <li><a href="#" id="logoutBtn">Logout</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header>
+                <h1>Welcome, Admin</h1>
+                <p>Monitor system activity and manage healthcare records securely.</p>
+            </header>
+
+            <!-- Cards Section -->
+            <section class="cards">
+                <div class="card">
+                    <h3>Total Hospitals</h3>
+                    <p id="totalHospitals">12</p>
+                </div>
+                <div class="card">
+                    <h3>Total Patients</h3>
+                    <p id="totalPatients">56</p>
+                </div>
+                <div class="card">
+                    <h3>Blockchain Transactions</h3>
+                    <p id="transactions">230</p>
+                </div>
+            </section>
+
+            <!-- Table Section -->
+            <section class="table-section">
+                <h2>Recent Records</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Patient ID</th>
+                            <th>Name</th>
+                            <th>Diagnosis</th>
+                            <th>Last Updated</th>
+                            <th>Blockchain Hash</th>
+                        </tr>
+                    </thead>
+                    <tbody id="recordsTable">
+                        <tr>
+                            <td>101</td>
+                            <td>Jane Doe</td>
+                            <td>Asthma</td>
+                            <td>2025-11-13</td>
+                            <td>0xabc123...</td>
+                        </tr>
+                        <tr>
+                            <td>102</td>
+                            <td>John Smith</td>
+                            <td>Diabetes</td>
+                            <td>2025-11-12</td>
+                            <td>0xdef456...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+        </main>
+    </div>
+
+     <!-- Footer -->
+    <footer>
+        <img src="H-C-H pics/Screenshot 2025-11-12 175401.png" height="70" width="300" alt="Image">
+        <p>© 2025 Health-Care-Hub | Blockchain-Based Health Records | All Rights Reserved</p>
+        <img src="H-C-H pics/Screenshot 2025-11-12 150000.png" height="70" width="100" alt="LogoImage">
+    </footer>
+
+    <script src="admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration | EHR Blockchain System</title>
+    <link rel="stylesheet" href="registration.css">
+</head>
+<body>
+        <!-- Header Section -->
+    <header class="header">
+        <div class="logo"><img id="logo" src="H-C-H pics/Screenshot 2025-11-12 150000.png" height="70" width="100" alt="LogoImage"></div>
+        <nav class="navbar">
+            <a href="main.html" class="active">Home</a>
+            <a href="aboutus.html">About</a>
+            <a href="features.html">Features</a>
+            <a href="contact.html">Contact</a>
+            <a href="registration.html">Register</a>
+            <a href="login.html">Login</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <img id="slogo" src="H-C-H pics/Screenshot 2025-11-12 151139.png" height="50" width="60" alt="logo">
+        <h1 class="title">User Registration</h1>
+
+        <!-- Toggle Buttons -->
+        <div class="toggle-box">
+            <button id="patientBtn" class="toggle-btn active">Patient Registration</button>
+            <button id="hospitalBtn" class="toggle-btn">Hospital Registration</button>
+        </div>
+
+        <!-- Patient Registration Form -->
+        <form id="patientForm" class="form-box">
+
+            <h2>Patient Registration</h2>
+
+            <label>Full Name</label>
+            <input type="text" placeholder="Enter full name">
+
+            <label>Date of Birth</label>
+            <input type="date">
+
+            <label>Email</label>
+            <input type="email" placeholder="Enter email">
+
+            <label>Phone Number</label>
+            <input type="text" placeholder="Enter phone number">
+
+            <label>Username</label>
+            <input type="text" placeholder="Choose username">
+
+            <label>Password</label>
+            <input type="password" placeholder="Create password">
+
+            <label>Select Hospital</label>
+            <select>
+                <option>-- Select Hospital --</option>
+                <option>City General Hospital</option>
+                <option>Sunrise Clinic</option>
+                <option>Meditech Hospital</option>
+            </select>
+
+            <button class="submit-btn">Register as Patient</button>
+        </form>
+
+        <!-- Hospital Registration Form -->
+        <form id="hospitalForm" class="form-box hidden">
+
+            <h2>Hospital Registration</h2>
+
+            <label>Hospital Name</label>
+            <input type="text" placeholder="Enter hospital name">
+
+            <label>Hospital Registration Number</label>
+            <input type="text" placeholder="Government license number">
+
+            <label>Hospital Email</label>
+            <input type="email" placeholder="Official email">
+
+            <label>Phone Number</label>
+            <input type="text" placeholder="Official phone number">
+
+            <label>Hospital Admin Name</label>
+            <input type="text" placeholder="Contact person name">
+
+            <label>Username</label>
+            <input type="text" placeholder="Choose username">
+
+            <label>Password</label>
+            <input type="password" placeholder="Create password">
+
+            <label>Subscription Plan</label>
+            <select>
+                <option>-- Select Plan --</option>
+                <option>Monthly Subscription</option>
+                <option>Yearly Subscription</option>
+            </select>
+
+            <button class="submit-btn">Register Hospital</button>
+        </form>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <img src="H-C-H pics/Screenshot 2025-11-12 175401.png" height="70" width="300" alt="Image">
+        <p>© 2025 Health-Care-Hub | Blockchain-Based Health Records | All Rights Reserved</p>
+        <img src="H-C-H pics/Screenshot 2025-11-12 150000.png" height="70" width="100" alt="LogoImage">
+    </footer>
+
+    <script src="registration.js"></script>
+</body>
+</html>

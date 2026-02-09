@@ -1,0 +1,155 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #f0f4f0;
+    margin: 0;
+    padding: 0;
+}
+
+
+/* Header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #008037;
+    color: white;
+    padding: 5px 10px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+#logo {
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    margin: 0 20px;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.navbar a:hover,
+.navbar a.active {
+    color: #aaffc8;
+}
+
+.btn-login {
+    background-color: #ffffff;
+    color: #008037;
+    padding: 8px 14px;
+    border-radius: 6px;
+    font-weight: bold;
+    *transition: transform 0.3s;
+    tra
+}
+
+.btn-login:hover {
+    background-color: #aaffc8;
+    color: #008037;
+}
+
+.container {
+    width: 95%;
+    max-width: 450px;
+    margin: 120px auto 40px auto;
+    padding: 25px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+}
+
+#slogo{ 
+       border-radius: 8px;
+       box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        
+    }
+
+.title {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #0c6f27;
+}
+
+.toggle-box {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 25px;
+    gap: 10px;
+}
+
+.toggle-btn {
+    padding: 10px 18px;
+    border: none;
+    background: #d5ead5;
+    color: #0c6f27;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.toggle-btn.active {
+    background: #0c6f27;
+    color: white;
+}
+
+.form-box {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.hidden {
+    display: none;
+}
+
+label {
+    font-weight: bold;
+}
+
+input {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+.submit-btn {
+    margin-top: 10px;
+    padding: 12px;
+    background: #0c6f27;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.submit-btn:hover {
+    background: #0a5b20;
+}
+
+/* Footer */
+footer {
+    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #008037;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    font-size: 0.9em;
+    img{
+        border-radius: 10px;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+    }
+    p{
+        font-weight: bolder;
+    }
+}

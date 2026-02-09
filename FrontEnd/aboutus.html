@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Us | HCH Project</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
+            color: #333;
+        }
+
+        /* Header */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #008037;
+            color: white;
+            padding: 5px 10px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        #logo {
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .navbar a:hover,
+        .navbar a.active {
+            color: #27d667;
+        }
+
+        .btn-login {
+            background-color: #ffffff;
+            color: #008037;
+            padding: 8px 14px;
+            border-radius: 6px;
+            font-weight: bold;
+        }
+
+
+        header {
+            
+            background: #27d667;
+            color: white;
+            padding: 100px 30px 30px 30px;
+            text-align: center;
+        }
+
+        .container {
+            width: 85%;
+            margin: auto;
+            padding: 20px 0;
+        }
+
+        .section {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            color: #008037;
+        }
+
+        .team {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .member {
+            background: #fafafa;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+
+        .member img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 15px;
+            border: 3px solid #008037;
+        }
+
+        .member h3 {
+            margin-bottom: 5px;
+            color: #008037;
+        }
+
+        .member p {
+            margin: 0;
+        }
+
+        /* Footer */
+        footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #008037;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            font-size: 0.9em;
+            img{
+                border-radius: 10px;
+                box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+            }
+            p{
+                font-weight: bolder;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+     <!-- Header Section -->
+    <header class="header">
+        <div class="logo"><img id="logo" src="H-C-H pics/Screenshot 2025-11-12 150000.png" height="70" width="100" alt="LogoImage"></div>
+        <nav class="navbar">
+            <a href="main.html">Home</a>
+            <a href="aboutus.html">About</a>
+            <a href="features.html">Features</a>
+            <a href="contact.html"class="active" >Contact</a>
+            <a href="registration.html">Register</a>
+            <a href="login.html">LogIn</a>
+        </nav>
+    </header>
+
+    <header>
+        <h1>About Us – HCH Project</h1>
+        <p>Simple | Efficient | User-Friendly</p>
+    </header>
+
+    <div class="container">
+
+        <!-- About Section -->
+        <div class="section">
+            <h2>About Us</h2>
+            <p>
+                HCH is a project created to provide a simple, efficient, and user-friendly system 
+                that helps users complete tasks quickly and accurately. The platform focuses on 
+                reliability, security, and modern design, ensuring that real-world challenges can 
+                be solved through smart and effective technology.
+            </p>
+        </div>
+
+        <!-- Vision Section -->
+        <div class="section">
+            <h2>Our Vision</h2>
+            <p>
+                To create an innovative and reliable system that delivers simplicity, accuracy, 
+                and long-term improvement for users, making everyday tasks easier and more efficient.
+            </p>
+        </div>
+
+        <!-- Mission Section -->
+        <div class="section">
+            <h2>Our Mission</h2>
+            <ul>
+                <li>To develop a user-friendly and accessible platform</li>
+                <li>To provide fast, secure, and well-organized services</li>
+                <li>To solve real-world problems using modern technology</li>
+                <li>To enhance user experience with effective system design</li>
+            </ul>
+        </div>
+
+        <!-- Team Members -->
+        <div class="section">
+            <h2>Our Team</h2>
+            <div class="team">
+
+                <div class="member">
+                    <img src="H-C-H pics/emmanuel 1 cover.jpg" alt="Emmanuel Charles">
+                    <h3>Emmanuel Charles</h3>
+                    <p>Project Coordinator / Research Lead</p>
+                </div>
+
+                <div class="member">
+                    <img src="H-C-H pics/morqan 1 pot.jpg" alt="Emmanuel Khamis">
+                    <h3>Emmanuel Khamis</h3>
+                    <p>Lead Developer / System Designer</p>
+                </div>
+
+                <div class="member">
+                    <img src="H-C-H pics/william 4 cover.jpg" alt="Williams Kuch">
+                    <h3>Williams Kuch</h3>
+                    <p>Backend Developer / Database Manager</p>
+                </div>
+
+                <div class="member">
+                    <img src="H-C-H pics/jimmy 1pot.jpg" alt="Masicluis Jimmy">
+                    <h3>Masicluis Jimmy</h3>
+                    <p>UI/UX Designer / Tester</p>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+      <!-- Footer -->
+    <footer>
+        <img src="H-C-H pics/Screenshot 2025-11-12 175401.png" height="70" width="300" alt="Image">
+        <p>© 2025 Health-Care-Hub | Blockchain-Based Health Records | All Rights Reserved</p>
+        <img src="H-C-H pics/Screenshot 2025-11-12 150000.png" height="70" width="100" alt="LogoImage">
+    </footer>
+
+
+</body>
+</html>
