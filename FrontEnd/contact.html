@@ -3,13 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact | EHR-Chain</title>
+    <title>Contact | Health-Care-Hub</title>
+
+    <!-- External CSS -->
     <link rel="stylesheet" href="subpages.css">
+
+    <!-- EmailJS Library -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+    <!-- EmailJS Initialization -->
+    <script>
+        (function () {
+            emailjs.init({
+                publicKey: "eFlkmna47FbuPAspM",
+            });
+        })();
+    </script>
 </head>
+
 <body>
 
+<!-- ================= HEADER ================= -->
 <header class="header">
-    <div class="logo"><img id="logo" src="H-C-H pics/Screenshot 2025-11-12 150000.png" height="70" width="100"></div>
+    <div class="logo">
+        <img id="logo" src="H-C-H pics/Screenshot 2025-11-12 150000.png" height="70" width="100">
+    </div>
+
     <nav class="navbar">
         <a href="main.html">Home</a>
         <a href="aboutus.html">About</a>
@@ -20,11 +39,30 @@
     </nav>
 </header>
 
+<!-- ================= PAGE HEADER ================= -->
 <section class="page-header">
     <h1>Contact Us</h1>
     <p>Reach out for enquiries, partnerships, or platform support.</p>
+
+        <!-- ================= CONTACT FORM ================= -->
+    <div class="contact-card contact-form-card">
+        <h2>✉️ Send Us a Message</h2>
+
+        <form id="contact-form" onsubmit="sendEmail(event)">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <input type="text" name="subject" placeholder="Subject" required>
+            <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+
+            <button type="submit">Send Message</button>
+            <p id="form-status"></p>
+        </form>
+    </div>
+
+</section>
 </section>
 
+<!-- ================= CONTACT SECTION ================= -->
 <section class="contact-section">
 
     <div class="contact-card">
@@ -49,14 +87,65 @@
         <p>GEHU Afro-Tech • B.Tech CSE</p>
     </div>
 
+    <!-- ================= CONTACT FORM ================= -->
+    <div class="contact-card contact-form-card">
+        <h2>✉️ Send Us a Message</h2>
+
+        <form id="contact-form" onsubmit="sendEmail(event)">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <input type="text" name="subject" placeholder="Subject" required>
+            <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+
+            <button type="submit">Send Message</button>
+            <p id="form-status"></p>
+        </form>
+    </div>
+
 </section>
 
+<!-- ================= FOOTER ================= -->
 <footer>
     <img src="H-C-H pics/Screenshot 2025-11-12 175401.png" height="70" width="300">
     <p>© 2025 Health-Care-Hub | Blockchain-Based Health Records</p>
     <img src="H-C-H pics/Screenshot 2025-11-12 150000.png" height="70" width="100">
 </footer>
 
+<!-- ================= EMAIL SEND SCRIPT ================= -->
+<script>
+function sendEmail(event) {
+    event.preventDefault();
+
+    const status = document.getElementById("form-status");
+    status.style.color = "#000";
+    status.innerText = "Sending message...";
+
+    emailjs.send(
+        "service_1fkqc0n",
+        "template_hd2vzku",
+        {
+            name: document.querySelector("[name='name']").value,
+            email: document.querySelector("[name='email']").value,
+            subject: document.querySelector("[name='subject']").value,
+            message: document.querySelector("[name='message']").value
+        },
+        "eFlkmna47FbuPAspM"
+    )
+    .then(function () {
+        status.style.color = "green";
+        status.innerText = "✅ Message sent successfully!";
+        document.getElementById("contact-form").reset();
+    })
+    .catch(function (error) {
+        status.style.color = "red";
+        status.innerText = "❌ Failed to send message. Please try again.";
+        console.error("EmailJS Error:", error);
+    });
+}
+</script>
+
+<!-- Existing JS (optional) -->
 <script src="subpages.js"></script>
+
 </body>
 </html>

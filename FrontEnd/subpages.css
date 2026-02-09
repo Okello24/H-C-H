@@ -80,8 +80,39 @@ body{
     margin-bottom:10px;
 }
 
+/* Email form*/
+.contact-form-card form {
+    
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.contact-form-card input,
+.contact-form-card textarea {
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+}
+
+.contact-form-card button {
+    padding: 10px;
+    background-color: #008037;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.contact-form-card button:hover {
+    background-color: #27d667;
+}
+
+
 /* CONTACT PAGE */
 .contact-section{
+    margin-top: 20px;
     padding:40px;
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
