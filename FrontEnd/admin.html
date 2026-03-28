@@ -12,11 +12,11 @@
         <div class="logo"><img id="logo" src="H-C-H pics/Screenshot 2025-11-12 150000.png" height="70" width="100" alt="LogoImage"></div>
         <nav class="navbar">
             <a href="admin.html" class="active">Dashboard</a>
-            <a href="#about">Patients</a>
-            <a href="#features">Records</a>
-            <a href="#contact">Blockchain Logs</a>
-            <a href="registration.html">Settings</a>
-            <a href="login.html">LogOut</a>
+            <a href="#">Patients</a>
+            <a href="#">Records</a>
+            <a href="#">Blockchain Logs</a>
+            <a href="#">Settings</a>
+            <a href="#" id="logoutBtn">LogOut</a>
         </nav>
     </header>
 
@@ -25,9 +25,9 @@
         <!-- Sidebar -->
         <aside class="sidebar">
             <h2 class="logo"></h2>
-            <p>admin's name</p>
-            <p>admin's Phone</p>
-            <p>admin's Email</p>
+            <p id="adminName">Admin Name</p>
+            <p id="adminPhone">Phone</p>
+            <p id="adminEmail">Email</p>
             <nav>
                 <ul>
                     <li><a href="#" class="active">Dashboard</a></li>
@@ -35,7 +35,7 @@
                     <li><a href="#">Records</a></li>
                     <li><a href="#">Blockchain Logs</a></li>
                     <li><a href="#">Settings</a></li>
-                    <li><a href="#" id="logoutBtn">Logout</a></li>
+                    <li><a href="#" id="sidelogoutBtn">LogOut</a></li>
                 </ul>
             </nav>
         </aside>
@@ -104,6 +104,31 @@
         <img src="H-C-H pics/Screenshot 2025-11-12 150000.png" height="70" width="100" alt="LogoImage">
     </footer>
 
-    <script src="admin.js"></script>
+<script>
+fetch("http://127.0.0.1:5000/api/check-session", {
+    method: "GET",
+    credentials: "include"
+})
+.then(res => {
+    if (!res.ok) {
+        throw new Error("Not logged in");
+    }
+    return res.json();
+})
+.then(data => {
+    console.log("Session OK:", data);
+
+    // 🔥 IMPORTANT: role check
+    if (data.role !== "admin") {
+        alert("Unauthorized access");
+        window.location.href = "login.html";
+    }
+})
+.catch(err => {
+    console.log("Session failed:", err);
+    window.location.href = "login.html";
+});
+</script>
+<script src="admin.js"></script>
 </body>
 </html>

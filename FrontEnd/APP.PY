@@ -1,9 +1,16 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, session
 from flask_cors import CORS
 import psycopg2
 
 app = Flask(__name__)
-CORS(app)  # Allow frontend–backend communication
+
+app.secret_key = "super-secret-key"
+
+CORS(app, supports_credentials=True)
+
+app.config['SESSION_COOKIE_SAMESITE'] = "Lax"
+app.config['SESSION_COOKIE_SECURE'] = False
+ # Allow frontend–backend communication
 
 # ----------------------------------------------
 # DATABASE CONNECTION
@@ -63,6 +70,11 @@ def login_patient():
     password = data.get("password")
 
     result = login_user(username, password, "patient")
+
+    if result["status"] == "success":
+        session["user_id"] = result["user_id"]
+        session["role"] = result["role"]
+
     return jsonify(result)
 
 # ----------------------------------------------
@@ -75,6 +87,10 @@ def login_hospital():
     password = data.get("password")
 
     result = login_user(username, password, "hospital")
+
+    if result["status"] == "success":
+        session["user_id"] = result["user_id"]
+        session["role"] = result["role"]
     return jsonify(result)
 
 # ----------------------------------------------
@@ -87,13 +103,11 @@ def login_admin():
     password = data.get("password")
 
     result = login_user(username, password, "admin")
-    return jsonify(result)
 
-# ----------------------------------------------
-# SERVER RUN
-# ----------------------------------------------
-if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000, debug=True)
+    if result["status"] == "success":
+        session["user_id"] = result["user_id"]
+        session["role"] = result["role"]
+    return jsonify(result)
 
 @app.route("/test", methods=["POST"])
 def test():
@@ -107,3 +121,55 @@ def test():
     row = cur.fetchone()
 
     return jsonify({"db_username": row[0], "db_password": row[1], "sent_password": password})
+
+@app.route("/api/check-session", methods=["GET"])
+def check_session():
+    if "user_id" in session:
+        return jsonify({
+            "status": "success",
+            "role": session["role"]
+        })
+    return jsonify({"status": "error"}), 401
+
+@app.route("/api/logout", methods=["POST"])
+def logout():
+    session.clear()
+    return jsonify({"status": "success"})
+
+@app.route("/api/admin/details", methods=["GET"])
+def get_admin_details():
+    if "user_id" not in session:
+        return jsonify({"status": "error"}), 401
+
+    try:
+        conn = get_db()
+        cur = conn.cursor()
+
+        cur.execute("""
+            SELECT username, email
+            FROM users
+            WHERE user_id = %s
+        """, (session["user_id"],))
+
+        user = cur.fetchone()
+
+        cur.close()
+        conn.close()
+
+        if user:
+            return jsonify({
+                "status": "success",
+                "username": user[0],
+                "email": user[1]
+            })
+
+        return jsonify({"status": "error"})
+
+    except Exception as e:
+        return jsonify({"status": "error", "message": str(e)})
+
+# ----------------------------------------------
+# SERVER RUN
+# ----------------------------------------------
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=5000, debug=True)

@@ -1,7 +1,22 @@
 // Example JavaScript for dynamic dashboard updates
 
 document.addEventListener("DOMContentLoaded", function() {
-    console.log("Dashboard loaded successfully.");
+    console.log("Admin page loaded successfully.");
+
+    fetch("http://127.0.0.1:5000/api/admin/details", {
+        credentials: "include"
+    })
+    .then(res => res.json())
+    .then(data => {
+        if (data.status === "success") {
+            document.getElementById("adminName").innerText = data.username;
+            document.getElementById("adminEmail").innerText = data.email;
+
+            // Optional
+            document.querySelector(".main-content h1").innerText =
+                "Welcome, " + data.username;
+        }
+    });
 
     // Example of updating stats dynamically
     document.getElementById("totalHospitals").innerText = 15;
@@ -21,28 +36,29 @@ document.addEventListener("DOMContentLoaded", function() {
     table.appendChild(newRow);
 
     // Logout button behavior
-    document.getElementById("logoutBtn").addEventListener("click", function() {
-        alert("You have been logged out.");
-        window.location.href = "../login.html";
+    document.getElementById("logoutBtn").addEventListener("click", function(e) {
+    e.preventDefault();
+
+    fetch("http://127.0.0.1:5000/api/logout", {
+        method: "POST",
+        credentials: "include"
+    })
+    .then(() => {
+        alert("Logged out successfully");
+        window.location.href = "login.html";
     });
-});
-
-// Simple smooth scroll + dynamic navbar highlight
-
-document.addEventListener("DOMContentLoaded", function() {
-    const navLinks = document.querySelectorAll(".navbar a");
-
-    window.addEventListener("scroll", () => {
-        let fromTop = window.scrollY + 100;
-
-        navLinks.forEach(link => {
-            const section = document.querySelector(link.hash);
-            if (section && section.offsetTop <= fromTop && section.offsetTop + section.offsetHeight > fromTop) {
-                navLinks.forEach(l => l.classList.remove("active"));
-                link.classList.add("active");
-            }
-        });
     });
 
-    console.log("Homepage loaded successfully.");
+    document.getElementById("sidelogoutBtn").addEventListener("click", function(e) {
+    e.preventDefault();
+
+    fetch("http://127.0.0.1:5000/api/logout", {
+        method: "POST",
+        credentials: "include"
+    })
+    .then(() => {
+        alert("Logged out successfully");
+        window.location.href = "login.html";
+    });
+    });
 });

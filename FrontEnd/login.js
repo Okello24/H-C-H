@@ -47,63 +47,6 @@ adminBtn.onclick = () => {
     adminForm.classList.remove("hidden");
 };
 
-// Simple smooth scroll + dynamic navbar highlight
-
-document.addEventListener("DOMContentLoaded", function() {
-    const navLinks = document.querySelectorAll(".navbar a");
-
-    window.addEventListener("scroll", () => {
-        let fromTop = window.scrollY + 100;
-
-        navLinks.forEach(link => {
-            const section = document.querySelector(link.hash);
-            if (section && section.offsetTop <= fromTop && section.offsetTop + section.offsetHeight > fromTop) {
-                navLinks.forEach(l => l.classList.remove("active"));
-                link.classList.add("active");
-            }
-        });
-    });
-
-    console.log("Homepage loaded successfully.");
-});
-
-/* ================= TOGGLE BUTTONS =================
-const patientBtn = document.getElementById("patientBtn");
-const hospitalBtn = document.getElementById("hospitalBtn");
-const adminBtn = document.getElementById("adminBtn");
-
-const patientForm = document.getElementById("patientForm");
-const hospitalForm = document.getElementById("hospitalForm");
-const adminForm = document.getElementById("adminForm");
-
-// Toggle functions
-patientBtn.addEventListener("click", () => toggleForm("patient"));
-hospitalBtn.addEventListener("click", () => toggleForm("hospital"));
-adminBtn.addEventListener("click", () => toggleForm("admin"));
-
-function toggleForm(type) {
-    patientBtn.classList.remove("active");
-    hospitalBtn.classList.remove("active");
-    adminBtn.classList.remove("active");
-
-    patientForm.classList.add("hidden");
-    hospitalForm.classList.add("hidden");
-    adminForm.classList.add("hidden");
-
-    if (type === "patient") {
-        patientBtn.classList.add("active");
-        patientForm.classList.remove("hidden");
-    }
-    if (type === "hospital") {
-        hospitalBtn.classList.add("active");
-        hospitalForm.classList.remove("hidden");
-    }
-    if (type === "admin") {
-        adminBtn.classList.add("active");
-        adminForm.classList.remove("hidden");
-    }
-}
-*/
 // ================= REGEX PATTERNS =================
 const regex = {
     username: /^[A-Za-z0-9_]{4,16}$/,
@@ -163,9 +106,14 @@ function login(role) {
     const username = document.querySelector(`#${role}Form input[name='username']`).value;
     const password = document.querySelector(`#${role}Form input[name='password']`).value;
 
-    fetch(`http://localhost:5000/api/login/${role}`, {
+    console.log("Role:", role);
+    fetch(`http://127.0.0.1:5000/api/login/${role}`, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { 
+            "Content-Type": "application/json",
+            "Cache-Control": "no-cache"
+        },
+        credentials: "include",
         body: JSON.stringify({ username, password })
     })
     .then(res => res.json())
