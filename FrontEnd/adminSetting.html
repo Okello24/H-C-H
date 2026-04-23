@@ -4,18 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard | EHR-Chain</title>
-    <link rel="stylesheet" href="admin.css">
+    <link rel="stylesheet" href="adminSetting.css">
 </head>
 <body>
     <!-- Header Section -->
     <header class="header">
         <div class="logo"><img id="logo" src="H-C-H pics/Screenshot 2025-11-12 150000.png" height="70" width="100" alt="LogoImage"></div>
         <nav class="navbar">
-            <a href="admin.html" class="active">Dashboard</a>
+            <a href="admin.html" >Dashboard</a>
             <a href="#">Patients</a>
             <a href="adminRecords.html">Records</a>
             <a href="#">Blockchain Logs</a>
-            <a href="adminSetting.html">Settings</a>
+            <a href="adminSetting.html" class="active">Settings</a>
             <a href="#" id="logoutBtn">LogOut</a>
             <img id="headerProfilePic" alt="Profile" width="40" height="40"  style="border-radius:50% ; border: 3px solid white ;">
         </nav>
@@ -32,11 +32,11 @@
             <p id="adminEmail">Email</p>
             <nav>
                 <ul>
-                    <li><a href="admin.html" class="active">Dashboard</a></li>
+                    <li><a href="admin.html">Dashboard</a></li>
                     <li><a href="#">Patients</a></li>
                     <li><a href="adminRecords.html">Records</a></li>
                     <li><a href="#">Blockchain Logs</a></li>
-                    <li><a href="adminSetting.html">Settings</a></li>
+                    <li><a href="adminSetting.html" class="active">Settings</a></li>
                     <li><a href="#" id="sidelogoutBtn">LogOut</a></li>
                 </ul>
             </nav>
@@ -51,46 +51,20 @@
 
             <!-- Cards Section -->
             <section class="cards">
-                <div class="card">
-                    <h3>Total Hospitals</h3>
-                    <p id="totalHospitals">100</p>
-                </div>
-                <div class="card">
-                    <h3>Total Patients</h3>
-                    <p id="totalPatients">202</p>
-                </div>
-                <div class="card">
-                    <h3>Total Users</h3>
-                    <p id="totalUsers">302</p>
-                </div>
+                <h2> Make Sure you safe changes</h2>
+                <form id="profileForm" enctype="multipart/form-data">
+                    <input id="profile" class="file" type="file" placeholder="Upload New Profile ">
+                    <input id="name" class="input" type="text" placeholder="Edit Your Name">
+                    <input id="phoneNo" class="input" type="number" placeholder="Update Your Phone Number">
+                    <input id="email" class="input" type="email" placeholder="Update Your Email Address">
+                    <input id="password" class="input" type="password" placeholder="Change Your password">
+                    <input id="confirmPassword" class="input" type="password" placeholder="Confirm Your password">
+                    <button id="button" >Safe Changes</button>
+                </form>
+                
             </section>
 
-            <!-- Table Section -->
-            <section class="table-section">
-                <h2>Recent Records</h2>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>User ID</th>
-                            <th>Name</th>
-                            <th>Role</th>
-                            <th>Email</th>
-                            <th>Created at</th>
-                            <th>Last Updated</th>
-                        </tr>
-                    </thead>
-                    <tbody id="recordsTable">
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </section>
+           
         </main>
     </div>
 
@@ -126,6 +100,6 @@ fetch("http://127.0.0.1:5000/api/check-session", {
     window.location.href = "login.html";
 });
 </script>
-<script src="admin.js"></script>
+<script src="adminSetting.js"></script>
 </body>
 </html>

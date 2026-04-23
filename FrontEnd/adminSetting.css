@@ -40,7 +40,7 @@ body {
     transition: color 0.3s;
 }
 
-.navbar a:hover, 
+.navbar a:hover,
 .navbar a.active {
     color: #237af4;
 }
@@ -144,50 +144,55 @@ header p {
     font-size: 1.8em;
     font-weight: bold;
 }
+/* PROFILE FORM FOR ADMIN PROFILE SETTINGS*/
+body {
+    background-color: #f4f7fb;
+    font-family: Arial, sans-serif;
+}
 
-/* Table Section */
-.table-section {
+.cards {
     background: white;
-    padding: 20px;
+    padding: 30px;
     border-radius: 12px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    width: 500px;
+    margin: 40px auto;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    border-top: 5px solid #002b5b;
 }
 
-.table-section table {
+.cards h2 {
+    color: #002b5b;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.input, .file {
     width: 100%;
-    border-collapse: collapse;
-}
-
-.table-section th,
-.table-section td {
     padding: 12px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
+    margin: 10px 0;
+    border: 1px solid #00509e;
+    border-radius: 8px;
+    outline: none;
 }
 
-.table-section th {
-    background-color: #00509e;
+.input:focus {
+    border-color: #002b5b;
+    box-shadow: 0 0 5px #00509e;
+}
+
+#button {
+    width: 100%;
+    padding: 12px;
+    background: #00509e;
     color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
 }
 
-.table-section tr:hover {
-    background-color: #f2f2f2;
-}
-
-@media (max-width: 768px) {
-    .dashboard-container {
-        flex-direction: column;
-    }
-
-    .sidebar {
-        width: 100%;
-        flex-direction: row;
-        justify-content: space-around;
-    }
-
-    .cards {
-        flex-direction: column;
-    }
+#button:hover {
+    background: #002b5b;
 }
 
 /* Footer */

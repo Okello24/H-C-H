@@ -1,7 +1,13 @@
-from flask import Flask, request, jsonify, session
+from flask import Flask, request, jsonify, session,send_from_directory
 from flask_cors import CORS
 import psycopg2
 
+from db import get_db
+from routes.admin import admin_bp
+
+#---------------------------------------------
+#PART OF SESSION
+#---------------------------------------------
 app = Flask(__name__)
 
 app.secret_key = "super-secret-key"
@@ -11,6 +17,11 @@ CORS(app, supports_credentials=True)
 app.config['SESSION_COOKIE_SAMESITE'] = "Lax"
 app.config['SESSION_COOKIE_SECURE'] = False
  # Allow frontend–backend communication
+
+#----------------------------------------------
+#import blueprin
+#----------------------------------------------
+app.register_blueprint(admin_bp)
 
 # ----------------------------------------------
 # DATABASE CONNECTION
@@ -32,14 +43,16 @@ def login_user(username, password, role):
         conn = get_db()
         cur = conn.cursor()
 
-        query = """
-        SELECT user_id, username, email, role
-        FROM users
-        WHERE username = %s AND password_hash = %s AND role = %s
-        LIMIT 1;
-        """
+        # 🔐 Verify password using PostgreSQL crypt (bcrypt)
+        cur.execute("""
+            SELECT user_id, username, email, phone_number, profile_picture, role
+            FROM users
+            WHERE username = %s
+            AND password_hash = crypt(%s, password_hash)
+            AND role = %s
+            LIMIT 1;
+        """, (username, password, role))
 
-        cur.execute(query, (username, password, role))
         user = cur.fetchone()
 
         cur.close()
@@ -51,15 +64,21 @@ def login_user(username, password, role):
                 "user_id": user[0],
                 "username": user[1],
                 "email": user[2],
-                "role": user[3]
+                "phone": user[3],
+                "profile_picture": user[4],
+                "role": user[5]
             }
         else:
-            return {"status": "error", "message": "Invalid credentials"}
+            return {
+                "status": "error",
+                "message": "Invalid username, password, or role"
+            }
 
     except Exception as e:
-        return {"status": "error", "message": str(e)}
-
-
+        return {
+            "status": "error",
+            "message": str(e)
+        }
 # ----------------------------------------------
 # PATIENT LOGIN API
 # ----------------------------------------------
@@ -146,7 +165,7 @@ def get_admin_details():
         cur = conn.cursor()
 
         cur.execute("""
-            SELECT username, email
+            SELECT username, email, phone_number, profile_picture
             FROM users
             WHERE user_id = %s
         """, (session["user_id"],))
@@ -160,13 +179,21 @@ def get_admin_details():
             return jsonify({
                 "status": "success",
                 "username": user[0],
-                "email": user[1]
-            })
+                "email": user[1],
+                "phone":user[2],
+                "profile_picture": user[3]                        })
 
         return jsonify({"status": "error"})
 
     except Exception as e:
         return jsonify({"status": "error", "message": str(e)})
+
+#-----------------------------------------------
+#photo upload
+#----------------------------------------------
+@app.route('/uploads/<path:filename>')
+def get_image(filename):
+    return send_from_directory('uploads', filename)
 
 # ----------------------------------------------
 # SERVER RUN

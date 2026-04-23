@@ -62,46 +62,7 @@ function validateField(input, pattern, msg) {
     }
     return true;
 }
-/*
-// ================= PATIENT LOGIN VALIDATION =================
-patientForm.addEventListener("submit", (e) => {
-    e.preventDefault();
 
-    const username = patientForm.querySelector("input[placeholder='Enter username']");
-    const password = patientForm.querySelector("input[placeholder='Enter password']");
-
-    if (!validateField(username, regex.username, "Invalid username! Must be 4–16 characters (letters, numbers, underscore).")) return;
-    if (!validateField(password, regex.password, "Password must contain letters & numbers (min 6 characters).")) return;
-
-    alert("Patient login successful!");
-});
-
-// ================= HOSPITAL LOGIN VALIDATION =================
-hospitalForm.addEventListener("submit", (e) => {
-    e.preventDefault();
-
-    const username = hospitalForm.querySelector("input[placeholder='Enter hospital username']");
-    const password = hospitalForm.querySelector("input[placeholder='Enter password']");
-
-    if (!validateField(username, regex.username, "Invalid hospital username format.")) return;
-    if (!validateField(password, regex.password, "Invalid password format! Must contain letters & numbers.")) return;
-
-    alert("Hospital login successful!");
-});
-
-// ================= ADMIN LOGIN VALIDATION =================
-adminForm.addEventListener("submit", (e) => {
-    e.preventDefault();
-
-    const username = adminForm.querySelector("input[placeholder='Enter admin username']");
-    const password = adminForm.querySelector("input[placeholder='Enter password']");
-
-    if (!validateField(username, regex.username, "Admin username must be valid (4–16 chars).")) return;
-    if (!validateField(password, regex.password, "Invalid admin password format.")) return;
-
-    alert("Admin login successful!");
-});
-*/
 function login(role) {
     const username = document.querySelector(`#${role}Form input[name='username']`).value;
     const password = document.querySelector(`#${role}Form input[name='password']`).value;

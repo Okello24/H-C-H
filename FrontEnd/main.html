@@ -7,32 +7,7 @@
     <link rel="stylesheet" href="main.css">
 </head>
 <body>
-<script>
-        console.log("Dashboard script started");
 
-        fetch("http://127.0.0.1:5000/api/check-session", {
-            method: "GET",
-            credentials: "include"
-        })
-        .then(res => {
-            console.log("Response status:", res.status);
-            return res.json();
-        })
-        .then(data => {
-            console.log("Session data:", data);
-
-            if (data.status !== "success") {
-                console.log("Not logged in → redirect");
-                window.location.href = "login.html";
-            } else {
-                console.log("Session valid ✅");
-            }
-        })
-        .catch(err => {
-            console.log("Error:", err);
-            window.location.href = "login.html";
-        });
-</script>
     <!-- Header Section -->
     <header class="header">
         <div class="logo"><img id="logo" src="H-C-H pics/Screenshot 2025-11-12 150000.png" height="70" width="100" alt="LogoImage"></div>
